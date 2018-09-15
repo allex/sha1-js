@@ -15,7 +15,7 @@ describe('use native to test', () => {
   });
 });
 
-describe('use pure js sha1.js to test', () => {
+describe('use pure js sha1-js to test', () => {
   test('sha1() with string, arraybuffer', () => {
     expect(sha1('allex')).toBe('d9e871f42129614cfd86c25de8b1ebd210f9e875');
     expect(sha1(arrayBuffer)).toBe('90e76e1a337cd9e9bb9b33ed834ae2a05b069685');

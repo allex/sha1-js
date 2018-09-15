@@ -1,10 +1,19 @@
 {
-  "name": "sha1.js",
+  "name": "sha1-js",
   "version": "1.0.0",
-  "description": "Sha1 implements with pure js. support string, Uint8Array, BuffArray",
+  "description": "Sha1 implements with pure js. supports string, Buffer, ArrayBuffer, Uint8Array",
   "main": "lib/sha1.js",
+  "module": "lib/sha1.esm.js",
+  "browser": "lib/sha1.min.js",
   "author": "allex <allex.wxn@gmail.com> (http://iallex.com/)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allex/sha1-js.git"
+  },
+  "keywords": [
+    "sha1"
+  ],
   "scripts": {
     "precommit": "npm run lint && npm test",
     "test": "jest --coverage",
