@@ -4,6 +4,10 @@ Sha1 implements with pure js. supports string, Buffer, ArrayBuffer, Uint8Array
 
 ## Usage
 
+```sh
+yarn add @allex/sha1 -D
+```
+
 ```js
 import { sha1 } from '@allex/sha1'
 
