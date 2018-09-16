@@ -1,11 +1,11 @@
-# sha1-js
+# sha1
 
 Sha1 implements with pure js. supports string, Buffer, ArrayBuffer, Uint8Array
 
 ## Usage
 
 ```js
-import { sha1 } from 'sha1-js'
+import { sha1 } from '@allex/sha1'
 
 const testBinaryFile = path.resolve(__dirname, 'files', 'me.png')
 const arrayBuffer = fs.readFileSync(testBinaryFile);
