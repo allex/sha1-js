@@ -93,19 +93,19 @@ const calcHash = blockArray => {
 };
 
 /*
- The standard SHA1 needs the input string to fit into a block
+ The standard SHA1 needs the input buffer to fit into a block
  This function align the input string to meet the requirement
  */
-const alignSHA1 = str => {
-  const l = str.length;
-  const nblk = ((l + 8) >> 6) + 1;
-  const blks = new Array(nblk * 16);
+const alignSHA1 = buffer => {
+  const l = buffer.length,
+    nblk = ((l + 8) >> 6) + 1,
+    blks = new Array(nblk * 16);
   let i = 0;
   for (i = 0; i < nblk * 16; i += 1) {
     blks[i] = 0;
   }
   for (i = 0; i < l; i += 1) {
-    blks[i >> 2] |= str.charCodeAt(i) << (24 - (i & 3) * 8);
+    blks[i >> 2] |= buffer[i] << (24 - (i & 3) * 8);
   }
   blks[i >> 2] |= 0x80 << (24 - (i & 3) * 8);
   blks[nblk * 16 - 1] = l * 8;
@@ -128,22 +128,15 @@ const binb2hex = H => {
  The main function to calculate message digest
  */
 const sha1 = s => {
-  let str = '';
-
   if (typeof s !== 'string') {
     if (isInstance(s, ArrayBuffer) ||
       (s && isInstance(s.buffer, ArrayBuffer))) {
       s = fromArrayBuffer(s);
     }
-
-    for (let i = -1, l = s.length; ++i < l;) {
-      str += String.fromCharCode(s[i]);
-    }
   } else {
-    str = utf8Encode(s);
+    s = str2utf8b(s);
   }
-
-  return binb2hex(calcHash(alignSHA1(str)));
+  return binb2hex(calcHash(alignSHA1(s)));
 };
 
 function fromArrayBuffer(array) {
@@ -151,12 +144,15 @@ function fromArrayBuffer(array) {
   return buf;
 }
 
-function utf8Encode(str) {
-  try {
-    return new TextEncoder().encode(str, 'utf-8').reduce((prev, curr) => prev + String.fromCharCode(curr), '');
-  } catch (e) { // no TextEncoder available?
-    return unescape(encodeURIComponent(str)); // monsur.hossa.in/2012/07/20/utf-8-in-javascript.html
+function str2utf8b(str) {
+  const binstr = unescape(encodeURIComponent(str)), // monsur.hossa.in/2012/07/20/utf-8-in-javascript.html
+    arr = new Uint8Array(binstr.length),
+    split = binstr.split('');
+  let l = split.length;
+  while (l--) {
+    arr[l] = split[l].charCodeAt(0);
   }
+  return arr;
 }
 
 function isInstance(obj, type) {
