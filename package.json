@@ -1,6 +1,6 @@
 {
   "name": "@allex/sha1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sha1 implements with pure js. supports string, Buffer, ArrayBuffer, Uint8Array",
   "main": "lib/sha1.js",
   "module": "lib/sha1.esm.js",
