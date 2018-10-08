@@ -5,6 +5,7 @@
   "main": "lib/sha1.js",
   "module": "lib/sha1.esm.js",
   "browser": "lib/sha1.min.js",
+  "types": "sha1.d.ts",
   "author": "allex <allex.wxn@gmail.com> (http://iallex.com/)",
   "license": "MIT",
   "repository": {
@@ -76,6 +77,7 @@
     }
   },
   "files": [
-    "lib"
+    "lib",
+    "*.d.ts"
   ]
 }
