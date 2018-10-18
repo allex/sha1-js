@@ -9,7 +9,7 @@ import { version, name, author, license, description, dependencies } from './pac
 const banner = (name, short = false) => {
   let s;
   if (short) {
-    s = `/* ${name} v${version} | ${license} licensed | ${author} */`
+    s = `/*! ${name} v${version} | ${license} licensed | ${author} */`
   } else {
     s = `/*
  * ${name} v${version} - ${description}
