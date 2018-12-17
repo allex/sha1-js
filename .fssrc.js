@@ -3,7 +3,7 @@
 import path from 'path'
 import babel from 'rollup-plugin-babel'
 
-import babelrc from './.babelrc.esm.js'
+import babelrc from './.babelrc'
 import { version, name, author, license, description, dependencies } from './package.json'
 
 const banner = (name, short = false) => {

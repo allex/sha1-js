@@ -1,6 +1,5 @@
-export default {
+{
   "presets": [
-   "@babel/preset-flow",
     [ "@babel/preset-env", {
       "modules": false,
       "loose": true,
